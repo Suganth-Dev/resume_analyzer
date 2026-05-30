@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-dark-50: 248, 250, 252;
+  --color-dark-100: 241, 245, 249;
+  --color-dark-200: 226, 232, 240;
+  --color-dark-300: 203, 213, 225;
+  --color-dark-400: 148, 163, 184;
+  --color-dark-500: 100, 116, 139;
+  --color-dark-600: 71, 85, 105;
+  --color-dark-700: 51, 65, 85;
+  --color-dark-800: 30, 41, 59;
+  --color-dark-900: 15, 23, 42;
+  --color-dark-950: 3, 7, 18;
+  
+  --panel-bg: rgba(15, 23, 42, 0.65);
+  --panel-border: rgba(51, 65, 85, 0.5);
+  
+  --card-bg: rgba(15, 23, 42, 0.4);
+  --card-border: rgba(51, 65, 85, 0.3);
+  
+  --input-bg: rgba(3, 7, 18, 0.4);
+  --input-border: rgba(71, 85, 105, 0.4);
+  
+  --scrollbar-track: #0b0f19;
+  --scrollbar-thumb: #1e293b;
+  
+  --glow-spot: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(3, 7, 18, 0) 70%);
+}
+
+.light {
+  --color-dark-950: 248, 250, 252;
+  --color-dark-900: 241, 245, 249;
+  --color-dark-800: 226, 232, 240;
+  --color-dark-700: 203, 213, 225;
+  --color-dark-600: 148, 163, 184;
+  --color-dark-500: 100, 116, 139;
+  --color-dark-400: 71, 85, 105;
+  --color-dark-300: 51, 65, 85;
+  --color-dark-200: 30, 41, 59;
+  --color-dark-100: 15, 23, 42;
+  --color-dark-50: 3, 7, 18;
+  
+  --panel-bg: rgba(255, 255, 255, 0.75);
+  --panel-border: rgba(203, 213, 225, 0.6);
+  
+  --card-bg: rgba(255, 255, 255, 0.55);
+  --card-border: rgba(203, 213, 225, 0.4);
+  
+  --input-bg: rgba(255, 255, 255, 0.95);
+  --input-border: rgba(148, 163, 184, 0.4);
+  
+  --scrollbar-track: #ede9fe;
+  --scrollbar-thumb: #cbd5e1;
+  
+  --glow-spot: radial-gradient(circle, rgba(139, 92, 246, 0.05) 0%, rgba(248, 250, 252, 0) 70%);
+}
+
+@layer base {
+  body {
+    @apply bg-dark-950 text-dark-100 font-sans antialiased selection:bg-brand-500 selection:text-white transition-colors duration-300;
+  }
+}
+
+/* Custom Webkit Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6d28d9;
+}
+
+/* Premium Card and Panel utilities */
+.glass-panel {
+  background: var(--panel-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--panel-border);
+}
+
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--card-border);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 20px -8px rgba(139, 92, 246, 0.15);
+}
+
+.glass-input {
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: rgb(var(--color-dark-100));
+  transition: all 0.2s ease-in-out;
+}
+
+.glass-input:focus {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+  outline: none;
+}
+
+/* Custom text and background gradients */
+.text-gradient {
+  background: linear-gradient(135deg, #a78bfa 0%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-gradient-brand {
+  background: linear-gradient(135deg, #7c3aed 0%, #0284c7 100%);
+}
+
+.bg-glow-spot {
+  background: var(--glow-spot);
+}
+
+/* Light Theme overrides for hardcoded dark elements */
+.light h1, .light h2, .light h3, .light h4, .light h5, .light h6, .light th {
+  color: #0f172a !important;
+}
+
+.light .text-white {
+  color: #0f172a;
+}
+
+.light button,
+.light button *,
+.light a.bg-gradient-brand,
+.light a.bg-gradient-brand *,
+.light .bg-gradient-brand,
+.light .bg-gradient-brand *,
+.light .bg-gradient-to-r,
+.light .bg-gradient-to-r *,
+.light .bg-brand-500,
+.light .bg-brand-500 *,
+.light .text-emerald-400,
+.light .text-amber-400,
+.light .text-red-400,
+.light .text-rose-500,
+.light .text-sky-400,
+.light .text-brand-300,
+.light .text-purple-450,
+.light .text-rose-450,
+.light .text-blue-450,
+.light .text-cyan-405,
+.light .text-purple-405,
+.light .text-cyan-400,
+.light .text-rose-450,
+.light .bg-rose-950\/40 *,
+.light .bg-purple-950\/40 *,
+.light .bg-emerald-950\/40 *,
+.light .bg-amber-950\/40 *,
+.light .bg-blue-950\/40 *,
+.light .bg-cyan-950\/40 *,
+.light .bg-indigo-950\/40 * {
+  color: inherit;
+}
+
+.light .glass-card .text-white {
+  color: #0f172a !important;
+}
+
+.light .text-gradient {
+  background: linear-gradient(135deg, #7c3aed 0%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
